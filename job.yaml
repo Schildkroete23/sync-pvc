@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sync
+  namespace: ifam-ierb
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/os: windows
+      containers:
+      - name: sync
+        image: mcr.microsoft.com/powershell:7.0.0-rc.3-windowsservercore-1809-kb4534273-amd64
+        #command: ["cp /src/ /dest/"]
+        volumeMounts:
+        - name: src
+          mountPath: /src
+        #  - name: dest
+        #    mountPath: /dest
+      restartPolicy: Never
+      volumes:
+      - name: src
+        persistentVolumeClaim:
+          claimName: hub-ierb-pvc
+      #- name: dest
+      #  persistentVolumeClaim:
+      #    claimName: dest_pvc
