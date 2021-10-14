@@ -20,8 +20,7 @@ spec:
         command:
         - powershell.exe
         args:
-          - "$Excluir = @( \"System Volume Information\",\"`$RECYCLE.BIN\") &&"
-          - "copy-item c:\\src\\* c:\\dest -exclude $Excluir -force -recurse"
+          - "copy-item c:\\src\\* c:\\dest -exclude \"System Volume Information\" -force -recurse"
         {{- else }}
         command:
         - bash
