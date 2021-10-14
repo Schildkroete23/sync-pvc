@@ -1,0 +1,10 @@
+os: windows
+hostname: aksnp5d00001m
+
+image: mcr.microsoft.com/powershell:7.0.0-rc.3-windowsservercore-1809-kb4534273-amd64
+
+pvcs:
+  src: ierb-calc-server
+  dest: hub-ierb-pvc
+
+namespace: ifam-ierb

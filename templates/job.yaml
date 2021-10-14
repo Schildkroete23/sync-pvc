@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sync
+  namespace: {{ .Values.namespace }}
+spec:
+  template:
+    spec:
+      nodeSelector:
+        {{- if .Values.os }}
+        kubernetes.io/os: {{ .Values.os }}
+        {{- end }}
+        {{- if .Values.hostname }}
+        kubernetes.io/hostname: {{ .Values.hostname }}
+        {{- end }}
+      containers:
+      - name: sync
+        image: {{ .Values.image }}
+        {{- if eq .Values.os "windows" }}
+        command:
+        - powershell.exe
+        args:
+          - "copy-item c:\\src\\* c:\\dest -force -recurse"
+        {{- else }}
+        command:
+        - bash
+        args:
+          - "cp -r /src/* /dest"
+        {{- end }}
+        volumeMounts:
+        - name: src
+          mountPath: /src
+        - name: dest
+          mountPath: /dest
+      restartPolicy: Never
+      volumes:
+      - name: src
+        persistentVolumeClaim:
+          claimName: {{ .Values.pvcs.src }}
+      - name: dest
+        persistentVolumeClaim:
+          claimName: {{ .Values.pvcs.dest }}
