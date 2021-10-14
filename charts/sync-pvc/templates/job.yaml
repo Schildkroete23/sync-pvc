@@ -20,7 +20,7 @@ spec:
         command:
         - powershell.exe
         args:
-          - "copy-item c:\\src\\* c:\\dest -force -recurse"
+          - "copy-item c:\\src\\* c:\\dest -force -recurse -ErrorAction SilentlyContinue"
         {{- else }}
         command:
         - bash
