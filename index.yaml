@@ -3,6 +3,16 @@ entries:
   sync-pvc:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2021-10-14T14:54:25.334676648Z"
+    description: A Helm chart for syncing two persistent volumes.
+    digest: c434b9659e274a4357b1d6e9a0632d183b34b9f250c0ba6a8df667ee3621b374
+    name: sync-pvc
+    type: application
+    urls:
+    - https://github.com/Schildkroete23/sync-pvc/releases/download/sync-pvc-0.2.1/sync-pvc-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2021-10-14T14:00:40.165607544Z"
     description: A Helm chart for syncing two persistent volumes.
     digest: 9e318a8b2c0fd26739cada441d066d9ce7e5db764e38b7f4e308edd7d299f986
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/Schildkroete23/sync-pvc/releases/download/sync-pvc-0.2.0/sync-pvc-0.2.0.tgz
     version: 0.2.0
-generated: "2021-10-14T14:00:40.165714945Z"
+generated: "2021-10-14T14:54:25.334689748Z"
